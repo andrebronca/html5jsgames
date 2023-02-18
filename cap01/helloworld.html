@@ -8,7 +8,28 @@
     <script type="text/javascript">
         // this function will be called once the page loads completely
         function pageLoad(){
-            alert('Hello World HTML5 and javascript');
+            //get a handle to the canvas object
+            var canvas = document.getElementById("testcanvas");
+            //get the 2d context for this canvas
+            var context = canvas.getContext("2d");
+
+            //filled rectangles
+            //draw a solid square with width and height of 100 pixels at (200,10)
+            context.fillRect(200, 10, 100, 100);
+            //draw a solid square with width of 90 pixels and height of 30 pixels at (50,70)
+            context.fillRect(50, 70, 90, 30);
+
+            //stroked rectangles
+            //draw a rectangular outline with width and height of 50 pixels at (110, 10)
+            context.strokeRect(110, 10, 50, 50);
+            //draw a rectangular outline with width and height of 50 pixels at (30, 10)
+            context.strokeRect(30, 10, 50, 50);
+
+            //clearing rectangles
+            //clear a rectangle with width of 30 pixels and height of 20 pixels at (210, 20)
+            context.clearRect(210, 20, 30, 20);
+            //clear a rectangle with width of 30 pixels and height of 20 pixels at (260, 20)
+            context.clearRect(260, 20, 30, 20);
         }
     </script>
 </head>
