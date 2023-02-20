@@ -12,8 +12,20 @@
             var canvas = document.getElementById("testcanvas");
             //get the 2d context for this canvas
             var context = canvas.getContext("2d");
-            //pg 8
             
+            //drawing images
+            //get a handle to the Image object
+            var image = document.getElementById("spaceship");
+
+            //draw the image at (0, 350)
+            context.drawImage(image, 0, 5);
+
+            //scale the image to half the original size
+            context.drawImage(image, 0, 100, 100, 140);
+
+            //draw part of the image
+            //tem que testar com outra imagem
+            context.drawImage(image, 0, 0, 60, 50, 0, 420, 60, 50);
 
         }
     </script>
@@ -22,5 +34,6 @@
     <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
         Your browser does not support HTML5 Canvas. Please shift to a newer browser.
     </canvas>
+    <img src="..\img\spaceship.png" alt="" id="spaceship" hidden>
 </body>
 </html>

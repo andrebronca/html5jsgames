@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhos complexos</title>
+    <script type="text/javascript">
+        // this function will be called once the page loads completely
+        function pageLoad(){
+            //get a handle to the canvas object
+            var canvas = document.getElementById("testcanvas");
+            //get the 2d context for this canvas
+            var context = canvas.getContext("2d");
+
+            var image = document.getElementById("spaceship");
+            context.drawImage(image, 100, 100, 75, 100 );
+            
+            //rotation and translation
+            //translate origin to location of object
+            context.translate(100,100);
+            //rotate about the new origin by 60 degrees
+            
+            context.rotate(Math.PI / 4);
+            //drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y,width, height)
+            context.drawImage(image, 0, 0, 75, 100, -200, -200, 75, 100);
+            
+            //restore to original state by rotating and translating back
+            context.rotate(-Math.PI / 3);
+            context.translate(-240, -370);
+            //translate origin to location of object
+            context.translate(300, 370);
+            //rotate about the new origin
+            context.rotate(3 * Math.PI / 4);
+            context.drawImage(image, 0, 0, 60, 50, -30, -25, 60, 50);
+            //restore to original state by rotating and translating back
+            context.rotate(-3 * Math.PI / 4);
+            context.translate(-300, -370);
+            
+            //esse exemplo ficou obscuro, tem que ser estudado.
+        }
+    </script>
+</head>
+<body onload="pageLoad();">
+    <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+        Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+    </canvas>
+    <img src="..\img\spaceship2.png" alt="" id="spaceship" hidden>
+</body>
+</html>
