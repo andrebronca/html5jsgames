@@ -1,0 +1,8 @@
+Pro HTML5 Games 2ed
+Aditya Ravi Shankar
+Início da leitura: 18/02/2023
+Motivo: Aula de PSS - Desenvolvimento de games
+Ultima pg lida:
+----
+Editor: Visual Studio Code
+

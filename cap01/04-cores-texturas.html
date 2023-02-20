@@ -12,8 +12,37 @@
             var canvas = document.getElementById("testcanvas");
             //get the 2d context for this canvas
             var context = canvas.getContext("2d");
-            //pg 21/432
+            
+            //fill styles and colors
+            //set fill color to red
+            context.fillStyle = 'red';
+            //draw a red filled rectangle
+            context.fillRect(310, 160, 100, 50);
 
+            //set stroke color to green
+            context.strokeStyle = "green";
+            //draw a green stroke rectangle
+            context.strokeRect(310, 240, 100, 50);
+
+            //set fill color to yellow using rgb()
+            context.fillStyle = "rgb(255, 255, 0)";
+            //draw a yellow filled rectangle
+            context.fillRect(420, 160, 100, 50);
+
+            //set fill color to green with an alpha of 0.6
+            context.fillStyle = "rgb(0, 255, 0, 0.6)";
+            //draw a semi-transparent green filled rectangle
+            context.fillRect(450, 180, 100, 50);
+
+            //textures
+            //get a handle to the image object
+            var fireImage = document.getElementById("fire");
+            var pattern = context.createPattern(fireImage, "repeat");
+
+            //set fill style to newly created pattern
+            context.fillStyle = pattern;
+            //draw a pattern filled rectangle
+            context.fillRect(420, 240, 130, 50);
         }
     </script>
 </head>
@@ -21,5 +50,6 @@
     <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
         Your browser does not support HTML5 Canvas. Please shift to a newer browser.
     </canvas>
+    <img src="..\img\fire.png" alt="" id="fire" hidden>
 </body>
 </html>
