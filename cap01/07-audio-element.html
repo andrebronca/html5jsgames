@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhos complexos</title>
+    <script type="text/javascript">
+        // this function will be called once the page loads completely
+        function pageLoad(){
+            //get a handle to the canvas object
+            var canvas = document.getElementById("testcanvas");
+            //get the 2d context for this canvas
+            var context = canvas.getContext("2d");
+
+            
+        }
+    </script>
+    <script>
+        //detectando o suporte de audio do browser via javascript
+        var audio = document.createElement("audio");
+        var mp3Support, oggSupport;
+
+        if (audio.canPlayType){
+            //Currently canPlayType() returns: "", "maybe", "probably"
+            mp3Support = "" !== audio.canPlayType("audio/mpeg");
+            oggSupport = "" !== audio.canPlayType("audio/ogg; codecs=\"vorbis\"");
+        } else {
+            //The audio tag is not supported
+            mp3Support = false;
+            oggSupport = false;
+        }
+
+        //check for ogg, then mp3, and finally set soundFileExt to undefined.
+        var soundFileExtn = oggSupport ? ".ogg" : mp3Support ? ".mp3" : undefined;
+
+        //Play the sound after waiting for it to load
+        if (soundFileExtn){
+            var sound = new Audio();
+
+            sound.addEventListener("canplaythrough", function(){
+                sound.play();
+            });
+
+            //load sound file with the detected extension
+            sound.src = "music" + soundFileExtn;
+            
+        }
+    </script>
+</head>
+<body onload="pageLoad();">
+    <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+        Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+    </canvas>
+    <audio controls="controls">
+        <source src="music.ogg" type="audio/ogg" />
+        <source src="music.mp3" type="audio/mpeg" />
+        Your browser does not support HTML5 audio. Please shift to a newser browser.
+    </audio>
+</body>
+</html>

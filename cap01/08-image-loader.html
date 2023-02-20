@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenhos complexos</title>
+    <script type="text/javascript">
+        // this function will be called once the page loads completely
+        function pageLoad(){
+            //get a handle to the canvas object
+            var canvas = document.getElementById("testcanvas");
+            //get the 2d context for this canvas
+            var context = canvas.getContext("2d");
+
+            
+        }
+    </script>
+    <script>
+        var image = new Image();
+        image.src = "spaceship.png";
+
+        image.onload = function(){
+            alert('Image finished loading');
+        };
+
+        var imageLoader = {
+            loaded: true,
+            loadedImages: 0,
+            totalImages: 0,
+            load: function(url){
+                this.totalImages++;
+                this.loaded = false;
+                var image = new Image();
+                image.src = url;
+                image.onload = function(){
+                    imageLoader.loadedImages++;
+                    if (imageLoader.loadedImages === imageLoader.totalImages){
+                        imageLoader.loaded = true;
+                    }
+                    image.onload = undefined;
+                }
+                return image;
+            },
+        };
+    </script>
+</head>
+<body onload="pageLoad();">
+    <canvas width="640" height="480" id="testcanvas" style="border: 1px solid black;">
+        Your browser does not support HTML5 Canvas. Please shift to a newer browser.
+    </canvas>
+    <img src="..\img\spaceship.png" alt="" id="spaceship">
+</body>
+</html>
